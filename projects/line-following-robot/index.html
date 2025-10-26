@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line-Following Robot - CoderDojo Banbridge</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../index.html">🏯 CoderDojo Banbridge</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../projects.html" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#join-us" class="nav-link">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>🤖 Line-Following Robot</h1>
+        <p>An intelligent robot built with Arduino</p>
+    </header>
+
+    <main>
+        <div class="project-detail-container">
+            <div class="project-sidebar">
+                <div class="project-info-card">
+                    <h3>Project Details</h3>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <strong>👨‍💻 Creator:</strong> 13-15 years old
+                        </div>
+                        <div class="meta-item">
+                            <strong>🛠️ Language:</strong> Arduino
+                        </div>
+                        <div class="meta-item">
+                            <strong>📊 Difficulty:</strong> Advanced
+                        </div>
+                        <div class="meta-item">
+                            <strong>🏷️ Tags:</strong>
+                            <div class="project-tags">
+                                <span class="tag">Robot</span>
+                                <span class="tag">Hardware</span>
+                                <span class="tag">Sensors</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-actions">
+                    <a href="../../projects.html" class="action-btn secondary">← Back to Projects</a>
+                    <a href="#try-it" class="action-btn primary">Try It Out</a>
+                </div>
+            </div>
+
+            <div class="project-content-main">
+                <section class="project-description">
+                    <h2>About This Project</h2>
+                    <p>An intelligent robot that follows black lines on white surfaces, programmed and built by our robotics enthusiasts aged 13-15.</p>
+
+                    <p>This advanced project combines hardware and software skills:</p>
+                    <ul>
+                        <li>Arduino programming and electronics</li>
+                        <li>Sensor integration and calibration</li>
+                        <li>Motor control and robotics</li>
+                        <li>Problem-solving and debugging</li>
+                        <li>Mechanical assembly and design</li>
+                    </ul>
+                </section>
+
+                <section class="project-screenshots">
+                    <h2>Project Screenshots</h2>
+                    <div class="screenshot-grid">
+                        <div class="screenshot-placeholder">
+                            <div class="screenshot-icon">🔧</div>
+                            <p>Robot Assembly</p>
+                        </div>
+                        <div class="screenshot-placeholder">
+                            <div class="screenshot-icon">📐</div>
+                            <p>Line Following</p>
+                        </div>
+                        <div class="screenshot-placeholder">
+                            <div class="screenshot-icon">⚙️</div>
+                            <p>Control Circuit</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-code">
+                    <h2>Code Example</h2>
+                    <div class="code-snippet">// Line Following Robot - Main Loop
+void loop() {
+    int sensorValue = analogRead(sensorPin);
+
+    if (sensorValue < threshold) {
+        // Black line detected - turn left
+        turnLeft();
+    } else {
+        // White surface - turn right
+        turnRight();
+    }
+
+    delay(10); // Small delay for stability
+}</div>
+
+                    <p>This Arduino code shows how the robot uses sensors to detect lines and adjust its movement accordingly.</p>
+                </section>
+
+                <section class="project-learning">
+                    <h2>What You'll Learn</h2>
+                    <div class="learning-points">
+                        <div class="learning-point">
+                            <h4>🔌 Electronics</h4>
+                            <p>Understanding circuits, sensors, and how hardware components work</p>
+                        </div>
+                        <div class="learning-point">
+                            <h4>🤖 Robotics</h4>
+                            <p>Building and programming autonomous machines</p>
+                        </div>
+                        <div class="learning-point">
+                            <h4>🔧 Problem Solving</h4>
+                            <p>Debugging complex systems and finding solutions</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="try-it" class="project-demo">
+                    <h2>Try It Yourself!</h2>
+                    <p>Want to build your own line-following robot? Here's how to get started:</p>
+
+                    <div class="demo-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Get Arduino Kit</h4>
+                                <p>Start with an Arduino Uno and basic electronics kit</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Add Sensors</h4>
+                                <p>Connect infrared sensors to detect black lines</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Program Logic</h4>
+                                <p>Write code to make the robot follow the line</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CoderDojo Banbridge • Part of the CoderDojo Foundation</p>
+        <p><strong>Global CoderDojo:</strong> <a href="https://coderdojo.com" target="_blank">coderdojo.com</a></p>
+    </footer>
+</body>
+</html>

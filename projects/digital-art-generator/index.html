@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Art Generator - CoderDojo Banbridge</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../index.html">🏯 CoderDojo Banbridge</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../projects.html" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#join-us" class="nav-link">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>🎨 Digital Art Generator</h1>
+        <p>Interactive web-based art generator built with JavaScript</p>
+    </header>
+
+    <main>
+        <div class="project-detail-container">
+            <div class="project-sidebar">
+                <div class="project-info-card">
+                    <h3>Project Details</h3>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <strong>👨‍💻 Creator:</strong> 11 years old
+                        </div>
+                        <div class="meta-item">
+                            <strong>🛠️ Language:</strong> JavaScript
+                        </div>
+                        <div class="meta-item">
+                            <strong>📊 Difficulty:</strong> Beginner
+                        </div>
+                        <div class="meta-item">
+                            <strong>🏷️ Tags:</strong>
+                            <div class="project-tags">
+                                <span class="tag">Art</span>
+                                <span class="tag">Creative</span>
+                                <span class="tag">Interactive</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-actions">
+                    <a href="../../projects.html" class="action-btn secondary">← Back to Projects</a>
+                    <a href="#try-it" class="action-btn primary">Try It Out</a>
+                </div>
+            </div>
+
+            <div class="project-content-main">
+                <section class="project-description">
+                    <h2>About This Project</h2>
+                    <p>Create beautiful geometric patterns and artwork with this interactive web-based art generator that responds to mouse movements.</p>
+
+                    <p>This creative project teaches fundamental web development:</p>
+                    <ul>
+                        <li>HTML5 Canvas and drawing</li>
+                        <li>JavaScript event handling</li>
+                        <li>Color theory and patterns</li>
+                        <li>Interactive user interfaces</li>
+                        <li>Creative coding concepts</li>
+                    </ul>
+                </section>
+
+                <section class="project-screenshots">
+                    <h2>Project Screenshots</h2>
+                    <div class="screenshot-grid">
+                        <div class="screenshot-placeholder">
+                            <div class="screenshot-icon">🌈</div>
+                            <p>Color Patterns</p>
+                        </div>
+                        <div class="screenshot-placeholder">
+                            <div class="screenshot-icon">🔄</div>
+                            <p>Interactive Mode</p>
+                        </div>
+                        <div class="screenshot-placeholder">
+                            <div class="screenshot-icon">✨</div>
+                            <p>Pattern Effects</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-code">
+                    <h2>Code Example</h2>
+                    <div class="code-snippet">// Digital Art Generator - Mouse Movement
+canvas.addEventListener('mousemove', function(e) {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Create colorful circles at mouse position
+    drawCircle(x, y, Math.random() * 20 + 5);
+});
+
+function drawCircle(x, y, radius) {
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = getRandomColor();
+    ctx.fill();
+}</div>
+
+                    <p>This JavaScript code creates interactive art that responds to mouse movements on the canvas.</p>
+                </section>
+
+                <section class="project-learning">
+                    <h2>What You'll Learn</h2>
+                    <div class="learning-points">
+                        <div class="learning-point">
+                            <h4>🎨 Creative Coding</h4>
+                            <p>Using code to create art and visual effects</p>
+                        </div>
+                        <div class="learning-point">
+                            <h4>🖱️ Event Handling</h4>
+                            <p>Responding to user interactions like mouse movements</p>
+                        </div>
+                        <div class="learning-point">
+                            <h4>🌈 Color & Design</h4>
+                            <p>Understanding colors, patterns, and visual composition</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="try-it" class="project-demo">
+                    <h2>Try It Yourself!</h2>
+                    <p>Want to create your own digital art? Here's how to get started:</p>
+
+                    <div class="demo-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Create Canvas</h4>
+                                <p>Add a canvas element to your HTML page</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Add JavaScript</h4>
+                                <p>Write code to draw shapes and respond to mouse events</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Make it Interactive</h4>
+                                <p>Add colors, patterns, and effects that respond to user input</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CoderDojo Banbridge • Part of the CoderDojo Foundation</p>
+        <p><strong>Global CoderDojo:</strong> <a href="https://coderdojo.com" target="_blank">coderdojo.com</a></p>
+    </footer>
+</body>
+</html>

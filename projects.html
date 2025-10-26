@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - CoderDojo Banbridge</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">🏯 CoderDojo Banbridge</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#join-us" class="nav-link">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Our Amazing Projects</h1>
+        <p>Check out what our young coders have created!</p>
+    </header>
+
+    <main>
+        <section class="projects-intro">
+            <h2>Showcasing Young Talent</h2>
+            <p>At CoderDojo Banbridge, our ninjas create incredible projects using code! From games and websites to apps and robots, here's a showcase of some of the amazing things our members have built.</p>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search projects by name, language, or tags..." />
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="beginner">Beginner</button>
+            <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+            <button class="filter-btn" data-filter="advanced">Advanced</button>
+            <button class="filter-btn" data-filter="scratch">Scratch</button>
+            <button class="filter-btn" data-filter="python">Python</button>
+            <button class="filter-btn" data-filter="javascript">JavaScript</button>
+            <button class="filter-btn" data-filter="html/css">HTML/CSS</button>
+            <button class="filter-btn" data-filter="arduino">Arduino</button>
+        </div>
+
+        <!-- Projects Grid (dynamically populated) -->
+        <div class="projects-grid">
+            <!-- Projects will be loaded here by JavaScript -->
+            <div class="loading">
+                <h3>🔄 Loading Projects...</h3>
+                <p>Please wait while we fetch the latest projects from our young coders!</p>
+            </div>
+        </div>
+
+        <!-- Fallback static projects (hidden by default, shown if JS fails) -->
+        <noscript>
+            <div class="projects-grid static-fallback" style="display: none;">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">🎮</div>
+                        <div class="project-difficulty difficulty-beginner">Beginner</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Space Adventure Game</h3>
+                        <p class="project-language">Made with Scratch</p>
+                        <p class="project-age">Created by 10 years old</p>
+                        <p>Navigate through space, avoid asteroids, and collect stars in this exciting adventure game created by our 10-year-old coding ninjas!</p>
+                        <div class="project-tags">
+                            <span class="tag">Game</span>
+                            <span class="tag">Animation</span>
+                            <span class="tag">Interactive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">🌐</div>
+                        <div class="project-difficulty difficulty-intermediate">Intermediate</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Personal Portfolio Website</h3>
+                        <p class="project-language">Made with HTML/CSS</p>
+                        <p class="project-age">Created by 12 years old</p>
+                        <p>A beautiful personal website showcasing artwork and achievements, built from scratch by one of our talented 12-year-old members.</p>
+                        <div class="project-tags">
+                            <span class="tag">Website</span>
+                            <span class="tag">Design</span>
+                            <span class="tag">Portfolio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">🤖</div>
+                        <div class="project-difficulty difficulty-advanced">Advanced</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Line-Following Robot</h3>
+                        <p class="project-language">Made with Arduino</p>
+                        <p class="project-age">Created by 13-15 years old</p>
+                        <p>An intelligent robot that follows black lines on white surfaces, programmed and built by our robotics enthusiasts aged 13-15.</p>
+                        <div class="project-tags">
+                            <span class="tag">Robot</span>
+                            <span class="tag">Hardware</span>
+                            <span class="tag">Sensors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">📱</div>
+                        <div class="project-difficulty difficulty-intermediate">Intermediate</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Weather App</h3>
+                        <p class="project-language">Made with Python</p>
+                        <p class="project-age">Created by 14 years old</p>
+                        <p>A desktop application that shows current weather conditions and forecasts, complete with beautiful icons and real-time data.</p>
+                        <div class="project-tags">
+                            <span class="tag">App</span>
+                            <span class="tag">API</span>
+                            <span class="tag">Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </noscript>
+
+        <section class="project-cta">
+            <h2>Ready to Create Your Own Project?</h2>
+            <p>Join CoderDojo Banbridge and start building amazing things with code! Our mentors will help you bring your ideas to life.</p>
+            <div class="dojo-badge">Start Your Coding Journey Today</div>
+            <p><a href="index.html#join-us" class="cta-button">Join Us Now</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CoderDojo Banbridge • Part of the CoderDojo Foundation</p>
+        <p><strong>Global CoderDojo:</strong> <a href="https://coderdojo.com" target="_blank">coderdojo.com</a></p>
+    </footer>
+
+    <!-- Load the JavaScript for dynamic project loading -->
+    <script src="projects/script.js"></script>
+</body>
+</html>
