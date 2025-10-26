@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Visualizer - CoderDojo Banbridge</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../index.html">🏯 CoderDojo Banbridge</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../projects.html" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#join-us" class="nav-link">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>🎵 Music Visualizer</h1>
+        <p>A web application that creates visual effects synchronized to music</p>
+    </header>
+
+    <main>
+        <div class="project-detail-container">
+            <div class="project-sidebar">
+                <div class="project-info-card">
+                    <h3>Project Details</h3>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <strong>👨‍💻 Creator:</strong> 13 years old
+                        </div>
+                        <div class="meta-item">
+                            <strong>🛠️ Language:</strong> JavaScript
+                        </div>
+                        <div class="meta-item">
+                            <strong>📊 Difficulty:</strong> Intermediate
+                        </div>
+                        <div class="meta-item">
+                            <strong>🏷️ Tags:</strong>
+                            <div class="project-tags">
+                                <span class="tag">Music</span>
+                                <span class="tag">Visualization</span>
+                                <span class="tag">Creative</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-actions">
+                    <a href="../../projects.html" class="action-btn secondary">← Back to Projects</a>
+                    <a href="#try-it" class="action-btn primary">Try It Out</a>
+                </div>
+            </div>
+
+            <div class="project-content-main">
+                <section class="project-description">
+                    <h2>About This Project</h2>
+                    <p>A web application that creates stunning visual effects synchronized to music, perfect for DJs and music lovers.</p>
+
+                    <p>This creative project combines multiple technologies:</p>
+                    <ul>
+                        <li>HTML5 Canvas and Web Audio API</li>
+                        <li>Real-time audio frequency analysis</li>
+                        <li>Dynamic visual effects and animations</li>
+                        <li>Responsive design and user controls</li>
+                        <li>Creative coding and multimedia</li>
+                    </ul>
+                </section>
+
+                <section class="project-screenshots">
+                    <h2>Project Screenshots</h2>
+                    <div class="screenshot-grid">
+                        <div class="screenshot-placeholder">
+                            <div class="screenshot-icon">🎆</div>
+                            <p>Visualizer Effects</p>
+                        </div>
+                        <div class="screenshot-placeholder">
+                            <div class="screenshot-icon">🎛️</div>
+                            <p>Audio Controls</p>
+                        </div>
+                        <div class="screenshot-placeholder">
+                            <div class="screenshot-icon">🌈</div>
+                            <p>Color Patterns</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-code">
+                    <h2>Code Example</h2>
+                    <div class="code-snippet">// Music Visualizer - Audio Analysis
+function analyzeAudio() {
+    analyser.getByteFrequencyData(dataArray);
+
+    // Clear canvas
+    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw frequency bars
+    for (let i = 0; i < bufferLength; i++) {
+        const barHeight = dataArray[i] * 2;
+        const x = (canvas.width / bufferLength) * i;
+
+        ctx.fillStyle = `rgb(${barHeight + 100}, 50, 100)`;
+        ctx.fillRect(x, canvas.height - barHeight, canvas.width / bufferLength - 1, barHeight);
+    }
+
+    requestAnimationFrame(analyzeAudio);
+}</div>
+
+                    <p>This JavaScript code analyzes audio frequencies in real-time and creates visual bars that respond to the music.</p>
+                </section>
+
+                <section class="project-learning">
+                    <h2>What You'll Learn</h2>
+                    <div class="learning-points">
+                        <div class="learning-point">
+                            <h4>🎵 Audio Processing</h4>
+                            <p>Working with sound, frequencies, and real-time audio analysis</p>
+                        </div>
+                        <div class="learning-point">
+                            <h4>🎨 Visual Effects</h4>
+                            <p>Creating dynamic animations that respond to data</p>
+                        </div>
+                        <div class="learning-point">
+                            <h4>⚡ Real-time Systems</h4>
+                            <p>Building applications that update continuously</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="try-it" class="project-demo">
+                    <h2>Try It Yourself!</h2>
+                    <p>Want to create your own music visualizer? Here's how to get started:</p>
+
+                    <div class="demo-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Setup Canvas</h4>
+                                <p>Create an HTML5 canvas element for drawing visualizations</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Access Audio</h4>
+                                <p>Use the Web Audio API to analyze sound frequencies</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Create Effects</h4>
+                                <p>Draw shapes and patterns that respond to the audio data</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CoderDojo Banbridge • Part of the CoderDojo Foundation</p>
+        <p><strong>Global CoderDojo:</strong> <a href="https://coderdojo.com" target="_blank">coderdojo.com</a></p>
+    </footer>
+</body>
+</html>
