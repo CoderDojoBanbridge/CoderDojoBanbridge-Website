@@ -7,10 +7,10 @@ body, h1, h2, p, ul, li {
 
 /* General body styling */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
+    color: #2c3e50;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -18,12 +18,13 @@ body {
 
 /* Navigation styling */
 .navbar {
-    background-color: #2c3e50;
+    background-color: #ffffff;
     padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 3px solid #e91e63;
 }
 
 .nav-container {
@@ -36,10 +37,18 @@ body {
 }
 
 .nav-logo a {
-    color: white;
+    color: #2c3e50;
     text-decoration: none;
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-logo a:hover {
+    color: #e91e63;
+    transition: color 0.3s ease;
 }
 
 .nav-menu {
@@ -47,70 +56,130 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
+    gap: 2rem;
 }
 
 .nav-menu li {
-    margin-left: 2rem;
+    margin-left: 0;
 }
 
 .nav-link {
-    color: white;
+    color: #2c3e50;
     text-decoration: none;
-    font-weight: 300;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+    background-color: #e91e63;
+    color: white;
+    transform: translateY(-2px);
+}
+
 .nav-link.active {
-    background-color: #27ae60;
+    background-color: #e91e63;
+    color: white;
 }
 
 /* Hero header styling */
 .hero {
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    background: linear-gradient(135deg, #e91e63 0%, #9c27b0 100%);
     color: white;
     text-align: center;
-    padding: 3rem 1rem;
-    margin-bottom: 2rem;
+    padding: 4rem 1rem;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="25" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    font-weight: 300;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
 }
 
 .hero p {
-    font-size: 1.4rem;
-    font-weight: 300;
-    opacity: 0.9;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Modern section styling */
+.section-wrapper {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
 }
 
 /* Main content styling */
 main {
     flex: 1;
-    padding: 2rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 section {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border-left: 4px solid #27ae60;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #e91e63, #9c27b0, #3f51b5);
 }
 
 section h2 {
-    color: #27ae60;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-    font-weight: 400;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #e91e63, #9c27b0);
+    border-radius: 2px;
 }
 
 section ul {
@@ -141,41 +210,460 @@ footer {
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: white;
     text-align: center;
-    padding: 1.5rem;
-    font-weight: bold;
-    box-shadow: 0 -4px 8px rgba(0,0,0,0.2);
+    padding: 3rem 1rem 2rem;
+    margin-top: 4rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+footer a {
+    color: #e91e63;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    color: #ff4081;
+    text-decoration: underline;
 }
 
 /* Special CoderDojo elements */
 .dojo-badge {
-    display: inline-block;
-    background-color: #27ae60;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 400;
-    margin: 0.5rem 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    font-size: 0.9rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin: 1.5rem 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.dojo-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.dojo-badge:hover::before {
+    left: 100%;
 }
 
 .code-snippet {
-    font-family: 'Courier New', monospace;
-    background-color: #34495e;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
     color: #e8f5e8;
-    padding: 1rem;
-    border-radius: 4px;
-    margin: 1rem 0;
-    font-size: 0.9rem;
-    border-left: 4px solid #27ae60;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border-left: 4px solid #e91e63;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* Projects page styling */
+/* Projects intro section styling */
 .projects-intro {
     text-align: center;
     margin-bottom: 3rem;
 }
 
+.upload-section {
+    margin-top: 2rem;
+}
+
+.upload-button {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.upload-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+}
+
+.upload-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.close {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    line-height: 1;
+}
+
+.close:hover {
+    opacity: 0.7;
+}
+
+/* Upload Form Styles */
+.upload-form {
+    padding: 2rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h3 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-bottom: 2px solid #e91e63;
+    padding-bottom: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #e91e63;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.25rem;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Icon Selector */
+.icon-selector {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.icon-selector input[type="radio"] {
+    display: none;
+}
+
+.icon-selector label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+.icon-selector input[type="radio"]:checked + label {
+    border-color: #e91e63;
+    background-color: rgba(233, 30, 99, 0.1);
+    transform: scale(1.1);
+}
+
+.icon-selector label:hover {
+    border-color: #e91e63;
+    transform: scale(1.05);
+}
+
+/* File Upload Area */
+.file-upload-area {
+    position: relative;
+    border: 2px dashed #e0e0e0;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.file-upload-area:hover {
+    border-color: #e91e63;
+    background-color: rgba(233, 30, 99, 0.05);
+}
+
+.file-upload-area input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.file-upload-placeholder p {
+    margin: 0.5rem 0;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.file-upload-placeholder small {
+    color: #666;
+}
+
+.file-list {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.file-list h4 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+}
+
+.file-list ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.file-list li {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #666;
+    border: 2px solid #e0e0e0;
+}
+
+.btn-secondary:hover {
+    border-color: #666;
+    color: #2c3e50;
+}
+
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 1% auto;
+        max-height: 95vh;
+    }
+    
+    .upload-form {
+        padding: 1rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .icon-selector {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+}
+
+.search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #e91e63;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    background: white;
+    color: #2c3e50;
+    border: 2px solid #e0e0e0;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.filter-btn:hover {
+    border-color: #e91e63;
+    color: #e91e63;
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+/* Projects grid styling */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -184,13 +672,23 @@ footer {
 }
 
 .project-card {
-    background-color: white;
-    border-radius: 12px;
+    background: white;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #e0e0e0;
-    opacity: 1; /* Ensure projects are visible by default */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #e91e63, #9c27b0, #3f51b5);
 }
 
 .project-link {
@@ -206,42 +704,60 @@ footer {
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(233, 30, 99, 0.15);
 }
 
 .project-image {
-    height: 150px;
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    height: 180px;
+    background: linear-gradient(135deg, #e91e63 0%, #9c27b0 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 3rem;
+    font-size: 3.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
 }
 
 .project-placeholder {
-    opacity: 0.8;
+    position: relative;
+    z-index: 1;
 }
 
 .project-content {
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .project-content h3 {
     color: #2c3e50;
     margin-bottom: 0.5rem;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 600;
+    line-height: 1.3;
 }
 
 .project-language {
-    color: #27ae60;
+    color: #e91e63;
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    background: rgba(233, 30, 99, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    display: inline-block;
 }
 
 .project-content p {
@@ -267,42 +783,63 @@ footer {
 
 .project-cta {
     text-align: center;
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    background: linear-gradient(135deg, #e91e63 0%, #9c27b0 100%);
     color: white;
-    padding: 3rem 2rem;
-    border-radius: 12px;
+    padding: 4rem 2rem;
+    border-radius: 16px;
     margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+    animation: float 20s linear infinite;
 }
 
 .project-cta h2 {
     color: white;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 300;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
 }
 
 .project-cta p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+    line-height: 1.6;
 }
 
 .cta-button {
     display: inline-block;
     background-color: white;
-    color: #27ae60;
-    padding: 0.75rem 2rem;
-    border-radius: 25px;
+    color: #e91e63;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
 }
 
 .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    background: #f8f9fa;
 }
 
 /* Loading state styling */
