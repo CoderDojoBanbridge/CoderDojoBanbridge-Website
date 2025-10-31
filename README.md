@@ -20,23 +20,7 @@ CoderDojoBanbridge-Website/
 ├── projects/               # Dynamic projects system
 │   ├── projects.json       # Project data
 │   ├── script.js           # Dynamic loading logic
-│   ├── README.md           # Projects documentation
-│   ├── space-adventure-game/
-│   │   └── index.html      # Individual project page
-│   ├── personal-portfolio-website/
-│   │   └── index.html      # Individual project page
-│   ├── line-following-robot/
-│   │   └── index.html      # Individual project page
-│   ├── weather-app/
-│   │   └── index.html      # Individual project page
-│   ├── digital-art-generator/
-│   │   └── index.html      # Individual project page
-│   ├── math-quiz-game/
-│   │   └── index.html      # Individual project page
-│   ├── chat-bot-assistant/
-│   │   └── index.html      # Individual project page
-│   └── music-visualizer/
-│       └── index.html      # Individual project page
+│   └── README.md           # Projects documentation
 ├── .gitignore
 ├── LICENSE
 └── README.md              # This file
@@ -45,8 +29,15 @@ CoderDojoBanbridge-Website/
 ## Getting Started
 
 1. **Local Development**: Simply open `index.html` in a web browser
-2. **Web Server**: For full functionality, serve from a local web server
-3. **Adding Projects**: See `projects/README.md` for detailed instructions
+2. **Web Server**: For full functionality, serve from a local web server:
+   ```bash
+   # Using Python (Python 3)
+   python -m http.server 8000
+   
+   # Using Node.js (with live-server)
+   npx live-server
+   ```
+3. **Project Upload System**: Coming soon - we're building functionality for members to upload their own projects!
 
 ## Dynamic Projects System
 

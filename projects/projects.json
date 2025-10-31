@@ -1,82 +1,12 @@
 [
   {
     "id": 1,
-    "title": "Space Adventure Game",
-    "language": "Scratch",
-    "description": "Navigate through space, avoid asteroids, and collect stars in this exciting adventure game created by our 10-year-old coding ninjas!",
-    "icon": "🎮",
-    "tags": ["Game", "Animation", "Interactive"],
-    "age": "10 years old",
-    "difficulty": "Beginner"
-  },
-  {
-    "id": 2,
-    "title": "Personal Portfolio Website",
-    "language": "HTML/CSS",
-    "description": "A beautiful personal website showcasing artwork and achievements, built from scratch by one of our talented 12-year-old members.",
-    "icon": "🌐",
-    "tags": ["Website", "Design", "Portfolio"],
-    "age": "12 years old",
-    "difficulty": "Intermediate"
-  },
-  {
-    "id": 3,
-    "title": "Line-Following Robot",
-    "language": "Arduino",
-    "description": "An intelligent robot that follows black lines on white surfaces, programmed and built by our robotics enthusiasts aged 13-15.",
-    "icon": "🤖",
-    "tags": ["Robot", "Hardware", "Sensors"],
-    "age": "13-15 years old",
-    "difficulty": "Advanced"
-  },
-  {
-    "id": 4,
-    "title": "Weather App",
-    "language": "Python",
-    "description": "A desktop application that shows current weather conditions and forecasts, complete with beautiful icons and real-time data.",
-    "icon": "📱",
-    "tags": ["App", "API", "Data"],
-    "age": "14 years old",
-    "difficulty": "Intermediate"
-  },
-  {
-    "id": 5,
-    "title": "Digital Art Generator",
-    "language": "JavaScript",
-    "description": "Create beautiful geometric patterns and artwork with this interactive web-based art generator that responds to mouse movements.",
-    "icon": "🎨",
-    "tags": ["Art", "Creative", "Interactive"],
-    "age": "11 years old",
-    "difficulty": "Beginner"
-  },
-  {
-    "id": 6,
-    "title": "Math Quiz Game",
-    "language": "Python",
-    "description": "An educational game that makes learning math fun! Features multiple difficulty levels and keeps track of high scores.",
-    "icon": "🧮",
-    "tags": ["Educational", "Quiz", "Learning"],
-    "age": "9 years old",
-    "difficulty": "Beginner"
-  },
-  {
-    "id": 7,
-    "title": "Chat Bot Assistant",
-    "language": "Python",
-    "description": "An AI-powered chat bot that can answer questions, tell jokes, and help with simple tasks, created by our 15-year-old coding prodigy.",
-    "icon": "💬",
-    "tags": ["AI", "Chat", "Assistant"],
-    "age": "15 years old",
-    "difficulty": "Advanced"
-  },
-  {
-    "id": 8,
-    "title": "Music Visualizer",
-    "language": "JavaScript",
-    "description": "A web application that creates stunning visual effects synchronized to music, perfect for DJs and music lovers.",
-    "icon": "🎵",
-    "tags": ["Music", "Visualization", "Creative"],
-    "age": "13 years old",
-    "difficulty": "Intermediate"
+    "title": "Coming Soon - Upload Your Projects!",
+    "language": "Multiple",
+    "description": "This is where amazing projects created by our CoderDojo Banbridge members will be showcased. We're building an upload system so young coders can easily share their creations with the community.",
+    "icon": "🚀",
+    "tags": ["Coming Soon", "Upload System", "Community"],
+    "age": "All ages",
+    "difficulty": "All levels"
   }
 ]
