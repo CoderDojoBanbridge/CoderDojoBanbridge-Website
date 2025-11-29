@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - CoderDojo Banbridge</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        const BACKEND_URL = "https://coderdojo-projects-upload.banbridge.workers.dev";
+    </script>
 </head>
 <body>
     <nav class="navbar">
@@ -340,7 +343,7 @@
         }
 
         // Form submission handling
-        uploadForm.addEventListener('submit', function(event) {
+        uploadForm.addEventListener('submit',  async function(event) {
             event.preventDefault();
             
             // Collect form data
@@ -355,14 +358,45 @@
                 tags: formData.get('tags').split(',').map(tag => tag.trim()).filter(tag => tag),
                 icon: formData.get('icon')
             };
-            
-            // TODO: This is where the actual upload logic will go
-            console.log('Project data:', projectData);
-            console.log('Files:', projectFolder.files);
-            
-            // For now, just show a success message
-            alert('Upload functionality coming soon! Your project details have been logged to the console.');
+
+            const uploadFormData = new FormData();
+
+            Object.entries(projectData).forEach(([key, value]) => {
+                if (Array.isArray(value)) {
+                    // multiple values for array fields
+                    value.forEach(v => uploadFormData.append(key, v));
+                } else if (value !== undefined && value !== null) {
+                    // convert number fields to string
+                    uploadFormData.append(key, value.toString());
+                }
+            });
+            Array.from(projectFolder.files).forEach(file => {
+                uploadFormData.append('files', file);
+            });
+
+            try {
+                const res = await fetch(`${BACKEND_URL}/projects`, {
+                    method: 'POST',
+                    body: uploadFormData,
+                });
+
+            if (!res.ok) {
+                const error = await res.json();
+                console.error('Upload failed', error);
+                alert('Upload failed, check console');
+                return;
+            }
+
+            const responseData = await res.json();
+            console.log('Upload successful', responseData);
+            alert('Project uploaded successfully!');
             closeUploadModal();
+
+            } catch (err) {
+            console.error('Error uploading project', err);
+            alert('An error occurred');
+            }            
+        
         });
     </script>
 </body>
