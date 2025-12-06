@@ -30,20 +30,32 @@
         <main>
             <section>
                 <h2>Ready to Start Your Coding Journey?</h2>
-                <p><strong>Sessions:</strong> We meet once a month in the big room upstairs at <a href="https://www.google.com/maps/place/Banbridge+District+Enterprise/@54.3520093,-6.2947744,17z/data=!3m1!4b1!4m6!3m5!1s0x4860e6a41983d593:0xdd15230ee0e37b9d!8m2!3d54.3520062!4d-6.2921995!16s%2Fg%2F11g3zpy6h7?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D">Banbridge District Center</a>.</p>
-                <p><strong>How to book: </strong> <a href="https://codeclub.org/en/clubs/gb/banbridge-co-down-banbridge-enterprise-centre">Free Tickets Here!   </a></p>
-                <p><strong>What to bring:</strong> Just your enthusiasm! While having a laptop helps, we can provide equipment if needed.</p>
-
-                <div class="dojo-badge">All abilities welcome • Ages 7-17 • Completely free</div>
+                <div class="contact-info">
+                    <p><strong>Sessions:</strong> We meet once a month in the big room upstairs at <a href="https://www.google.com/maps/place/Banbridge+District+Enterprise/@54.3520093,-6.2947744,17z/data=!3m1!4b1!4m6!3m5!1s0x4860e6a41983d593:0xdd15230ee0e37b9d!8m2!3d54.3520062!4d-6.2921995!16s%2Fg%2F11g3zpy6h7?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D">Banbridge District Center</a>.</p>
+                    <p><strong>How to book:</strong> <a href="https://codeclub.org/en/clubs/gb/banbridge-co-down-banbridge-enterprise-centre">Free Tickets Here!</a></p>
+                    <p><strong>What to bring:</strong> Just your enthusiasm! While having a laptop helps, we can provide equipment if needed.</p>
+                    <p><em>All abilities welcome • Ages 7-17 • Completely free</em></p>
+                </div>
             </section>
 
             <section>
                 <h2>Get In Touch</h2>
-                <p><strong>Email:</strong> <a href="mailto:banbridge@coderdojo.com">banbridge@coderdojo.com</a></p>
-                <p><strong>X: </strong>@CoderDojoBanb</p>
-                <p><strong>FaceBook: </strong> <a href="https://facebook.com/coderdojobanbridge">CoderDojoBanbridge</a></p>
-                <p><strong>Parent Whatsapp Group: </strong><a href="https://chat.whatsapp.com/GYRonHoGIMB9wcOUjEre9E">Join to see more</a></p>
-                <img src="Whatsapp QR.jpg" alt="Whatsapp QR" width="50%" height="50%">
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a href="mailto:banbridge@coderdojo.com">banbridge@coderdojo.com</a></p>
+                    <p><strong>X:</strong> @CoderDojoBanb</p>
+                    <p><strong>FaceBook:</strong> <a href="https://facebook.com/coderdojobanbridge">CoderDojoBanbridge</a></p>
+                    <p><strong>Parent Whatsapp Group:</strong> <a href="https://chat.whatsapp.com/GYRonHoGIMB9wcOUjEre9E">Join to see more</a></p>
+                </div>
+                
+                <button class="qr-toggle-btn" id="qrToggle">
+                    📱 Show WhatsApp QR Code
+                </button>
+                
+                <div class="qr-code-container" id="qrContainer" style="display: none;">
+                    <img src="Whatsapp QR.jpg" alt="Whatsapp QR" class="whatsapp-qr">
+                    <p class="qr-caption">Scan to join our WhatsApp group</p>
+                </div>
+
                 <div class="code-snippet">// We'd love to hear from you!<br>if (interested_in_coding) {<br>&nbsp;&nbsp;contact_us();<br>}</div>
             </section>
 
@@ -57,14 +69,13 @@
                     <li><strong>Equipment:</strong> Laptops provided if needed</li>
                     <li><strong>Registration:</strong> Contact us to reserve your spot</li>
                 </ul>
-
-                <div class="dojo-badge">No coding experience required!</div>
+                <p><em>No coding experience required!</em></p>
             </section>
 
             <section class="project-cta">
                 <h2>Ready to Code?</h2>
                 <p>Join our community of young coders and start building amazing projects with technology!</p>
-                <div class="dojo-badge">Your coding adventure starts here</div>
+                <p><em>Your coding adventure starts here</em></p>
                 <p><a href="mailto:info@coderdojobanbridge.com" class="cta-button">Contact Us Now</a></p>
             </section>
         </main>
@@ -74,5 +85,21 @@
         <p>&copy; 2024 CoderDojo Banbridge • Part of the Code Club community</p>
         <p><strong>Code Club:</strong> <a href="https://codeclub.org" target="_blank">codeclub.org</a> • <strong>Raspberry Pi Foundation:</strong> <a href="https://www.raspberrypi.org" target="_blank">raspberrypi.org</a></p>
     </footer>
+    <script src="navigation.js"></script>
+    <script>
+        // QR Code toggle functionality
+        document.getElementById('qrToggle').addEventListener('click', function() {
+            const qrContainer = document.getElementById('qrContainer');
+            const isHidden = qrContainer.style.display === 'none';
+            
+            if (isHidden) {
+                qrContainer.style.display = 'flex';
+                this.textContent = '📱 Hide WhatsApp QR Code';
+            } else {
+                qrContainer.style.display = 'none';
+                this.textContent = '📱 Show WhatsApp QR Code';
+            }
+        });
+    </script>
 </body>
 </html>
