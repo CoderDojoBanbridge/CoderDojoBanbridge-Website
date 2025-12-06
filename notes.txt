@@ -1,0 +1,4 @@
+Projects -> Showcase
+Try it here -> Projects
+
+Merge home and about

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase - CoderDojo Banbridge</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="CoderDojoLogo.png" alt="CoderDojo Logo" style="height: 40px; margin-right: 10px;">CoderDojo Banbridge</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="showcase.html" class="nav-link active">Showcase</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Our Amazing Showcase</h1>
+        <p>Discover the incredible work created by our young coders</p>
+    </header>
+
+    <div class="section-wrapper">
+        <main>
+            <section class="projects-intro">
+                <h2>Showcasing Young Talent</h2>
+                <p>At CoderDojo Banbridge, our young coders create incredible projects! From interactive games and dynamic websites to mobile apps and robotics projects, here's a showcase of the amazing work our members have built. Each project represents hours of creativity, problem-solving, and coding skill development.</p>
+                
+                <div class="dojo-badge">Projects by ages 7-17 • All skill levels</div>
+                
+                <div class="upload-section">
+                    <button id="uploadBtn" class="upload-button">
+                        📤 Upload Your Project
+                    </button>
+                    <p class="upload-description">Share your amazing creation with the CoderDojo community!</p>
+                </div>
+            </section>
+
+        <!-- Search and Filter Section -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search projects by name, language, or tags..." />
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="beginner">Beginner</button>
+            <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+            <button class="filter-btn" data-filter="advanced">Advanced</button>
+            <button class="filter-btn" data-filter="scratch">Scratch</button>
+            <button class="filter-btn" data-filter="python">Python</button>
+            <button class="filter-btn" data-filter="javascript">JavaScript</button>
+            <button class="filter-btn" data-filter="html/css">HTML/CSS</button>
+            <button class="filter-btn" data-filter="arduino">Arduino</button>
+        </div>
+
+        <!-- Projects Grid (dynamically populated) -->
+        <div class="projects-grid">
+            <!-- Projects will be loaded here by JavaScript -->
+            <div class="loading">
+                <h3>🔄 Loading Projects...</h3>
+                <p>Please wait while we fetch the latest projects from our young coders!</p>
+            </div>
+        </div>
+
+        <!-- Fallback static projects (hidden by default, shown if JS fails) -->
+        <noscript>
+            <div class="projects-grid static-fallback" style="display: none;">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">🎮</div>
+                        <div class="project-difficulty difficulty-beginner">Beginner</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Space Adventure Game</h3>
+                        <p class="project-language">Made with Scratch</p>
+                        <p class="project-age">Created by 10 years old</p>
+                        <p>Navigate through space, avoid asteroids, and collect stars in this exciting adventure game created by our 10-year-old coding ninjas!</p>
+                        <div class="project-tags">
+                            <span class="tag">Game</span>
+                            <span class="tag">Animation</span>
+                            <span class="tag">Interactive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">🌐</div>
+                        <div class="project-difficulty difficulty-intermediate">Intermediate</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Personal Portfolio Website</h3>
+                        <p class="project-language">Made with HTML/CSS</p>
+                        <p class="project-age">Created by 12 years old</p>
+                        <p>A beautiful personal website showcasing artwork and achievements, built from scratch by one of our talented 12-year-old members.</p>
+                        <div class="project-tags">
+                            <span class="tag">Website</span>
+                            <span class="tag">Design</span>
+                            <span class="tag">Portfolio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">🤖</div>
+                        <div class="project-difficulty difficulty-advanced">Advanced</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Line-Following Robot</h3>
+                        <p class="project-language">Made with Arduino</p>
+                        <p class="project-age">Created by 13-15 years old</p>
+                        <p>An intelligent robot that follows black lines on white surfaces, programmed and built by our robotics enthusiasts aged 13-15.</p>
+                        <div class="project-tags">
+                            <span class="tag">Robot</span>
+                            <span class="tag">Hardware</span>
+                            <span class="tag">Sensors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">📱</div>
+                        <div class="project-difficulty difficulty-intermediate">Intermediate</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Weather App</h3>
+                        <p class="project-language">Made with Python</p>
+                        <p class="project-age">Created by 14 years old</p>
+                        <p>A desktop application that shows current weather conditions and forecasts, complete with beautiful icons and real-time data.</p>
+                        <div class="project-tags">
+                            <span class="tag">App</span>
+                            <span class="tag">API</span>
+                            <span class="tag">Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </noscript>
+
+                <section class="project-cta">
+            <h2>Ready to Create Your Own Project?</h2>
+            <p>Join CoderDojo Banbridge and start building amazing things with code! Our volunteer mentors will guide you through your coding journey, from your very first line of code to complex projects that showcase your creativity and skills.</p>
+            <div class="dojo-badge">Start Your Coding Journey Today</div>
+            <p><a href="contact.html" class="cta-button">Join Us Now</a></p>
+        </section>
+        </main>
+    </div>
+
+            </main>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upload Your Project</h2>
+                <span class="close">&times;</span>
+            </div>
+            
+            <form id="uploadForm" class="upload-form">
+                <div class="form-section">
+                    <h3>Project Details</h3>
+                    
+                    <div class="form-group">
+                        <label for="projectTitle">Project Title *</label>
+                        <input type="text" id="projectTitle" name="title" required placeholder="My Amazing Project">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectDescription">Description *</label>
+                        <textarea id="projectDescription" name="description" required rows="4" placeholder="Tell us about your project and what it does..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="projectAuthor">Author Name *</label>
+                            <input type="text" id="projectAuthor" name="author" required placeholder="Your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="projectAge">Age</label>
+                            <input type="number" id="projectAge" name="age" min="7" max="17" placeholder="Your age">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="projectLanguage">Programming Language *</label>
+                            <select id="projectLanguage" name="language" required>
+                                <option value="">Select language...</option>
+                                <option value="Scratch">Scratch</option>
+                                <option value="Python">Python</option>
+                                <option value="JavaScript">JavaScript</option>
+                                <option value="HTML/CSS">HTML/CSS</option>
+                                <option value="Java">Java</option>
+                                <option value="C++">C++</option>
+                                <option value="Arduino">Arduino</option>
+                                <option value="Unity">Unity</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="projectDifficulty">Difficulty Level *</label>
+                            <select id="projectDifficulty" name="difficulty" required>
+                                <option value="">Select difficulty...</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectTags">Tags</label>
+                        <input type="text" id="projectTags" name="tags" placeholder="game, web, robot, art (separate with commas)">
+                        <small>Add tags to help others find your project</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectIcon">Choose an Icon</label>
+                        <div class="icon-selector">
+                            <input type="radio" name="icon" value="🎮" id="icon1"><label for="icon1">🎮</label>
+                            <input type="radio" name="icon" value="🌐" id="icon2"><label for="icon2">🌐</label>
+                            <input type="radio" name="icon" value="🤖" id="icon3"><label for="icon3">🤖</label>
+                            <input type="radio" name="icon" value="🎨" id="icon4"><label for="icon4">🎨</label>
+                            <input type="radio" name="icon" value="📱" id="icon5"><label for="icon5">📱</label>
+                            <input type="radio" name="icon" value="🧮" id="icon6"><label for="icon6">🧮</label>
+                            <input type="radio" name="icon" value="🎵" id="icon7"><label for="icon7">🎵</label>
+                            <input type="radio" name="icon" value="💬" id="icon8"><label for="icon8">💬</label>
+                            <input type="radio" name="icon" value="⚡" id="icon9"><label for="icon9">⚡</label>
+                            <input type="radio" name="icon" value="🚀" id="icon10" checked><label for="icon10">🚀</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Project Files</h3>
+                    
+                    <div class="form-group">
+                        <label for="projectFolder">Select Project Folder *</label>
+                        <div class="file-upload-area">
+                            <input type="file" id="projectFolder" name="folder" webkitdirectory directory multiple required>
+                            <div class="file-upload-placeholder">
+                                <div class="upload-icon">📁</div>
+                                <p>Click to select your project folder</p>
+                                <small>All files in the folder will be uploaded</small>
+                            </div>
+                            <div id="fileList" class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeUploadModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Upload Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 CoderDojo Banbridge • Part of the Code Club community</p>
+        <p><strong>Code Club:</strong> <a href="https://codeclub.org" target="_blank">codeclub.org</a> • <strong>Raspberry Pi Foundation:</strong> <a href="https://www.raspberrypi.org" target="_blank">raspberrypi.org</a></p>
+    </footer>
+
+    <!-- Load the JavaScript for dynamic project loading -->
+    <script src="projects/script.js"></script>
+    
+    <!-- Upload functionality script -->
+    <script>
+        // Modal functionality
+        const uploadBtn = document.getElementById('uploadBtn');
+        const uploadModal = document.getElementById('uploadModal');
+        const closeBtn = document.querySelector('.close');
+        const projectFolder = document.getElementById('projectFolder');
+        const fileList = document.getElementById('fileList');
+        const uploadForm = document.getElementById('uploadForm');
+
+        uploadBtn.addEventListener('click', function() {
+            uploadModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeBtn.addEventListener('click', closeUploadModal);
+
+        function closeUploadModal() {
+            uploadModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            uploadForm.reset();
+            fileList.style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === uploadModal) {
+                closeUploadModal();
+            }
+        });
+
+        // File selection handling
+        projectFolder.addEventListener('change', function(event) {
+            const files = event.target.files;
+            if (files.length > 0) {
+                displayFileList(files);
+            }
+        });
+
+        function displayFileList(files) {
+            fileList.innerHTML = '';
+            fileList.style.display = 'block';
+            
+            const header = document.createElement('h4');
+            header.textContent = `Selected ${files.length} files:`;
+            fileList.appendChild(header);
+            
+            const list = document.createElement('ul');
+            Array.from(files).slice(0, 10).forEach(file => {
+                const listItem = document.createElement('li');
+                listItem.textContent = file.webkitRelativePath || file.name;
+                list.appendChild(listItem);
+            });
+            
+            if (files.length > 10) {
+                const moreItem = document.createElement('li');
+                moreItem.textContent = `... and ${files.length - 10} more files`;
+                moreItem.style.fontStyle = 'italic';
+                list.appendChild(moreItem);
+            }
+            
+            fileList.appendChild(list);
+        }
+
+        // Form submission handling
+        uploadForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(uploadForm);
+            const projectData = {
+                title: formData.get('title'),
+                description: formData.get('description'),
+                author: formData.get('author'),
+                age: formData.get('age'),
+                language: formData.get('language'),
+                difficulty: formData.get('difficulty'),
+                tags: formData.get('tags').split(',').map(tag => tag.trim()).filter(tag => tag),
+                icon: formData.get('icon')
+            };
+            
+            // TODO: This is where the actual upload logic will go
+            console.log('Project data:', projectData);
+            console.log('Files:', projectFolder.files);
+            
+            // For now, just show a success message
+            alert('Upload functionality coming soon! Your project details have been logged to the console.');
+            closeUploadModal();
+        });
+    </script>
+</body>
+</html>
