@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Showcase - CoderDojo Banbridge</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        window.CODERDOJO_PROJECTS_API_URL = 'https://coderdojo-projects-upload.banbridge.workers.dev';
+    </script>
 </head>
 <body>
     <nav class="navbar">
@@ -14,9 +17,9 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="projects.html" class="nav-link">Project Ideas</a></li>
                 <li><a href="showcase.html" class="nav-link active">Showcase</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="contact.html" class="nav-link">How to Join</a></li>
             </ul>
         </div>
     </nav>
@@ -267,6 +270,13 @@
         </div>
     </div>
 
+    <dialog id="submissionSuccess" class="submission-success" aria-labelledby="submissionSuccessTitle" aria-describedby="submissionSuccessMessage">
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <h2 id="submissionSuccessTitle">Project submitted!</h2>
+        <p id="submissionSuccessMessage">Your project is now waiting for mentor approval. Please check back on the showcase later.</p>
+        <button id="successClose" class="btn-primary" type="button">Sounds good</button>
+    </dialog>
+
     <footer>
         <p>&copy; 2024 CoderDojo Banbridge • Part of the Code Club community</p>
         <p><strong>Code Club:</strong> <a href="https://codeclub.org" target="_blank">codeclub.org</a> • <strong>Raspberry Pi Foundation:</strong> <a href="https://www.raspberrypi.org" target="_blank">raspberrypi.org</a></p>
@@ -287,6 +297,10 @@
         const projectFolder = document.getElementById('projectFolder');
         const fileList = document.getElementById('fileList');
         const uploadForm = document.getElementById('uploadForm');
+        const submissionSuccess = document.getElementById('submissionSuccess');
+        const successClose = document.getElementById('successClose');
+
+        submissionSuccess.addEventListener('close', () => uploadBtn.focus());
 
         uploadBtn.addEventListener('click', function() {
             uploadModal.style.display = 'block';
@@ -294,6 +308,7 @@
         });
 
         closeBtn.addEventListener('click', closeUploadModal);
+        successClose.addEventListener('click', () => submissionSuccess.close());
 
         function closeUploadModal() {
             uploadModal.style.display = 'none';
@@ -343,30 +358,66 @@
         }
 
         // Form submission handling
-        uploadForm.addEventListener('submit', function(event) {
+        uploadForm.addEventListener('submit', async function(event) {
             event.preventDefault();
-            
-            // Collect form data
+            document.getElementById('uploadError')?.remove();
+
             const formData = new FormData(uploadForm);
-            const projectData = {
-                title: formData.get('title'),
-                description: formData.get('description'),
-                author: formData.get('author'),
-                age: formData.get('age'),
-                language: formData.get('language'),
-                difficulty: formData.get('difficulty'),
-                tags: formData.get('tags').split(',').map(tag => tag.trim()).filter(tag => tag),
-                icon: formData.get('icon')
-            };
-            
-            // TODO: This is where the actual upload logic will go
-            console.log('Project data:', projectData);
-            console.log('Files:', projectFolder.files);
-            
-            // For now, just show a success message
-            alert('Upload functionality coming soon! Your project details have been logged to the console.');
-            closeUploadModal();
+            const tagsValue = (formData.get('tags') || '').toString();
+            formData.delete('tags');
+            formData.delete('folder');
+            formData.delete('files');
+            formData.delete('filePaths');
+            tagsValue.split(',').map(tag => tag.trim()).filter(Boolean).forEach(tag => {
+                formData.append('tags', tag);
+            });
+
+            const files = Array.from(projectFolder.files || []);
+            files.forEach(file => {
+                const relativePath = file.webkitRelativePath || file.name;
+                formData.append('files', file, file.name);
+                formData.append('filePaths', relativePath);
+            });
+
+            const workerBaseUrl = window.CODERDOJO_PROJECTS_API_URL || 'http://localhost:8787';
+            const uploadUrl = `${workerBaseUrl.replace(/\/$/, '')}/projects`;
+            const submitButton = uploadForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+
+            try {
+                const response = await fetch(uploadUrl, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json().catch(() => ({}));
+
+                if (!response.ok) {
+                    throw new Error(typeof result.error === 'string' ? result.error : 'Upload failed');
+                }
+
+                closeUploadModal();
+                submissionSuccess.showModal();
+            } catch (error) {
+                console.error('Upload error:', error);
+                const message = error instanceof Error ? error.message : 'Unknown upload error';
+                showUploadError(`There was a problem submitting your project: ${message}`);
+            } finally {
+                submitButton.disabled = false;
+            }
         });
+
+        function showUploadError(message) {
+            let errorMessage = document.getElementById('uploadError');
+            if (!errorMessage) {
+                errorMessage = document.createElement('p');
+                errorMessage.id = 'uploadError';
+                errorMessage.setAttribute('role', 'alert');
+                errorMessage.className = 'upload-error';
+                uploadForm.prepend(errorMessage);
+            }
+            errorMessage.textContent = message;
+        }
     </script>
 </body>
 </html>

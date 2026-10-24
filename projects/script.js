@@ -4,6 +4,8 @@ class ProjectsManager {
         this.projects = [];
         this.filteredProjects = [];
         this.currentFilter = 'all';
+        const workerProjectsUrl = window.CODERDOJO_PROJECTS_DATA_URL || window.CODERDOJO_PROJECTS_API_URL;
+        this.dataUrl = workerProjectsUrl ? `${workerProjectsUrl.replace(/\/$/, '')}/projects` : './projects/projects.json';
         this.init();
     }
 
@@ -18,13 +20,13 @@ class ProjectsManager {
 
     async loadProjects() {
         try {
-            console.log('Attempting to load projects from ./projects/projects.json');
+            console.log('Attempting to load projects from', this.dataUrl);
 
             // Add timeout to fetch request
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
 
-            const response = await fetch('./projects/projects.json', {
+            const response = await fetch(this.dataUrl, {
                 signal: controller.signal
             });
             clearTimeout(timeoutId);
@@ -33,14 +35,18 @@ class ProjectsManager {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            this.projects = await response.json();
-            console.log('Loaded projects:', this.projects);
+
+            const allProjects = await response.json();
+            this.projects = Array.isArray(allProjects) ? allProjects.filter(project => {
+                const status = (project.status || '').toLowerCase();
+                return status === 'approved' || status === 'live' || status === 'published' || status === '';
+            }) : [];
+
+            console.log('Loaded approved projects:', this.projects);
             this.filteredProjects = [...this.projects];
         } catch (error) {
             console.error('Error loading projects:', error);
             this.showError(`Failed to load projects: ${error.message}`);
-            // Fallback: show static projects if dynamic loading fails
-            this.showStaticFallback();
         }
     }
 
@@ -81,22 +87,22 @@ class ProjectsManager {
     }
 
     createProjectCard(project) {
-        const tags = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
-        const difficultyClass = this.getDifficultyClass(project.difficulty);
-        const projectUrl = this.getProjectUrl(project.title);
+        const tags = Array.isArray(project.tags) ? project.tags.map(tag => `<span class="tag">${this.escapeHtml(tag)}</span>`).join('') : '';
+        const difficulty = project.difficulty || 'Beginner';
+        const difficultyClass = this.getDifficultyClass(difficulty);
+        const projectHref = this.getProjectHref(project);
 
         return `
-            <div class="project-card" data-project-id="${project.id}">
-                <a href="/CoderDojoBanbridge-Website/projects/${projectUrl}" class="project-link">
+            <div class="project-card" data-project-id="${this.escapeHtml(project.id)}">
+                <a href="${this.escapeHtml(projectHref)}" class="project-link">
                     <div class="project-image">
-                        <div class="project-placeholder">${project.icon}</div>
-                        <div class="project-difficulty ${difficultyClass}">${project.difficulty}</div>
+                        <div class="project-placeholder">${this.escapeHtml(project.icon || '🚀')}</div>
+                        <div class="project-difficulty ${difficultyClass}">${this.escapeHtml(difficulty)}</div>
                     </div>
                     <div class="project-content">
-                        <h3>${project.title}</h3>
-                        <p class="project-language">Made with ${project.language}</p>
-                        <p class="project-age">Created by ${project.age}</p>
-                        <p>${project.description}</p>
+                        <h3>${this.escapeHtml(project.title)}</h3>
+                        <p class="project-language">Made with ${this.escapeHtml(project.language)}</p>
+                        <p>${this.escapeHtml(project.description)}</p>
                         <div class="project-tags">
                             ${tags}
                         </div>
@@ -106,6 +112,45 @@ class ProjectsManager {
         `;
     }
 
+    escapeHtml(value) {
+        return String(value ?? '').replace(/[&<>"']/g, character => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        })[character]);
+    }
+
+    getProjectHref(project) {
+        const directUrl = project.url || project.href || project.path || project.page;
+        if (directUrl) {
+            if (directUrl.startsWith('http://') || directUrl.startsWith('https://')) {
+                return directUrl;
+            }
+            if (directUrl.startsWith('./') || directUrl.startsWith('../') || directUrl.startsWith('/')) {
+                return directUrl;
+            }
+            if (directUrl.endsWith('.html')) {
+                return directUrl;
+            }
+        }
+
+        const slug = project.slug || project.folder || this.slugify(project.title || 'project');
+        return `projects/${slug}/`;
+    }
+
+    slugify(value) {
+        return String(value)
+            .trim()
+            .toLowerCase()
+            .replace(/&/g, 'and')
+            .replace(/[^a-z0-9\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-|-$/g, '');
+    }
+
     getDifficultyClass(difficulty) {
         switch (difficulty.toLowerCase()) {
             case 'beginner': return 'difficulty-beginner';
@@ -113,11 +158,6 @@ class ProjectsManager {
             case 'advanced': return 'difficulty-advanced';
             default: return 'difficulty-beginner';
         }
-    }
-
-    getProjectUrl(title) {
-        // Convert title to URL-friendly format
-        return `${title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}/`;
     }
 
     setupFilters() {
@@ -153,12 +193,16 @@ class ProjectsManager {
 
     searchProjects(query) {
         const searchTerm = query.toLowerCase();
-        this.filteredProjects = this.projects.filter(project =>
-            project.title.toLowerCase().includes(searchTerm) ||
-            project.language.toLowerCase().includes(searchTerm) ||
-            project.description.toLowerCase().includes(searchTerm) ||
-            project.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-        );
+        this.filteredProjects = this.projects.filter(project => {
+            const title = (project.title || '').toLowerCase();
+            const language = (project.language || '').toLowerCase();
+            const description = (project.description || '').toLowerCase();
+            const tags = Array.isArray(project.tags) ? project.tags : [];
+            return title.includes(searchTerm) ||
+                language.includes(searchTerm) ||
+                description.includes(searchTerm) ||
+                tags.some(tag => (tag || '').toLowerCase().includes(searchTerm));
+        });
         this.renderProjects();
     }
 
@@ -166,11 +210,14 @@ class ProjectsManager {
         if (this.currentFilter === 'all') {
             this.filteredProjects = [...this.projects];
         } else {
-            this.filteredProjects = this.projects.filter(project =>
-                project.difficulty.toLowerCase() === this.currentFilter ||
-                project.language.toLowerCase() === this.currentFilter ||
-                project.tags.some(tag => tag.toLowerCase() === this.currentFilter)
-            );
+            this.filteredProjects = this.projects.filter(project => {
+                const difficulty = (project.difficulty || '').toLowerCase();
+                const language = (project.language || '').toLowerCase();
+                const tags = Array.isArray(project.tags) ? project.tags : [];
+                return difficulty === this.currentFilter ||
+                    language === this.currentFilter ||
+                    tags.some(tag => (tag || '').toLowerCase() === this.currentFilter);
+            });
         }
         this.renderProjects();
     }

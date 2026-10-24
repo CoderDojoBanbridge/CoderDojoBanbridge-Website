@@ -597,6 +597,58 @@ footer a:hover {
     font-weight: 600;
 }
 
+.submission-success {
+    width: min(90vw, 440px);
+    padding: 2.5rem;
+    border: 1px solid #e8eaf0;
+    border-radius: 20px;
+    color: #2c3e50;
+    text-align: center;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+}
+
+.submission-success::backdrop {
+    background: rgba(21, 30, 45, 0.62);
+    backdrop-filter: blur(5px);
+}
+
+.success-icon {
+    display: grid;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    place-items: center;
+    border-radius: 50%;
+    background: #e6f7ed;
+    color: #18864b;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.submission-success h2 {
+    margin: 0 0 0.75rem;
+    color: #243247;
+}
+
+.submission-success p {
+    margin: 0 0 1.5rem;
+    color: #596579;
+    line-height: 1.6;
+}
+
+.submission-success .btn-primary {
+    min-width: 150px;
+}
+
+.upload-error {
+    margin: 0 0 1.5rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid #f2b8b5;
+    border-radius: 8px;
+    background: #fff2f1;
+    color: #8e211b;
+}
+
 .close {
     color: white;
     font-size: 2rem;
